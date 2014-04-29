@@ -1,0 +1,67 @@
+{%- extends 'oscad:templates/oscad/base.jinja2' -%}
+
+{%- block content -%}
+<div class="row">
+  <div class="col-md-offset-1 col-md-10">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h4 class="panel-title">{{ _('Hint') }}</h4>
+      </div>
+      <div class="panel-body">
+        {%- trans -%}
+        OSCAd is intended to be used for each single open source software program or license in a project. But if you use the open source software only internally without distributing it, then OSCAd often (but not always) offers the same conclusion: There are no tasks to be performed but you must respect some interdictions.
+        {%- endtrans %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  {%- block request -%}{%- endblock -%}
+</div>
+
+<div class="row">
+  <div class="col-md-offset-1 col-md-10">
+    <h3>
+      {%- trans -%}
+	Challenge: Sometimes a project uses many open source libs and apps.
+      {%- endtrans -%}
+    </h3>
+    <p>
+      {%- trans -%}
+	OSCAd is intended to be used for each individual open source software program or library used by a project. That is necessary because you have to fulfill the license conditions for every single open source software. So in general, grouping is not possible.
+      {%- endtrans -%}
+    </p>
+  </div>
+
+  <div class="col-md-offset-1 col-md-10">
+    <h3>
+      {%- trans -%}
+	Solution: Simplification only for particular use-cases
+      {%- endtrans -%}
+    </h3>
+    <p>
+      {%- trans -%}
+	But if you use the open source software only internally without distributing it to any third party, the OSCAd analysis often (but not always) leads to the same conclusion: you have to do nothing but to respect some interdictions. 
+      {%- endtrans -%}
+    </p>
+  </div>
+
+  <div class="col-md-offset-1 col-md-10">
+    <h3>
+      {%- trans -%}
+	Implementation: Answer three questions to determine the use-case
+      {%- endtrans -%}
+    </h3>
+    <p>
+      {%- trans -%}
+	This check determines whether all software packages you use are covered by a use-case that allows a simplfied solution. If it is, you will get a list of interdictions that apply to all of the open source software that you want to use and you won't have to call the OSCAd for each single open source software package. 
+      {%- endtrans -%}
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  {%- include 'oscad:templates/oscad/disclaimer.jinja2' -%}
+</div>
+{%- endblock -%}

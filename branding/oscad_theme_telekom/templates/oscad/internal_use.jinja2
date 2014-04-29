@@ -1,0 +1,75 @@
+{%- extends 'oscad:templates/oscad/internal_use_base.jinja2' -%}
+
+{%- macro display_choices(id, default_value) -%}
+  <div class="radio">
+    <label>
+      <input type="radio" name="{{ id }}" value="true"
+      {% if default_value %}checked{% endif %} />
+      {{ _('Yes') }}
+    </label>
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="{{ id }}" value="false"
+      {% if not default_value %}checked{% endif %} />
+      {{ _('No') }}
+    </label>
+  </div>
+{%- endmacro -%}
+
+{%- block request -%}
+<div class="row">
+  <div class="col-md-offset-1 col-md-10">
+    <form action="{{ request.route_path('internal_use_result') }}" method="GET">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>{{ _('Question') }}</th>
+            <th>{{ _('Explanation') }}</th>
+            <th>{{ _('Answer') }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>{{_('Distribution to 3rd parties?')}}</b></td>
+            <td>
+	      {%- trans -%}
+		Is the open source application or library ever distributed to any third party (including other legal units of your company)?
+	      {%- endtrans -%}
+            </td>
+            <td>{{ display_choices('2others', true) }}</td>
+          </tr>
+
+          <tr>
+            <td><b>{{_('Software modifications?')}}</b></td>
+            <td>
+	      {%- trans -%}
+		Do you modify any of the open source software that your project wants to use?
+	      {%- endtrans -%}
+            </td>
+            <td>{{ display_choices('modified', true) }}</td>
+          </tr>
+
+          <tr>
+            <td><b>{{_('Only licenses supported by OSLiC?')}}</b></td>
+            <td>
+	      {%- trans -%}
+		Does your project use only open source software that has been licensed under one of the following open source licenses, which are covered by OSLiC: 
+	      {%- endtrans -%}
+              {{ ", ".join(licenses) }}
+            </td>
+            <td>{{ display_choices('oslic', false) }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center">
+        <button class="btn btn-primary" type="submit">
+          {{ _('Submit request') }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{%- endblock -%}
+
+

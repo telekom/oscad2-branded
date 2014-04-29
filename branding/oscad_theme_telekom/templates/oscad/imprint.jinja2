@@ -1,0 +1,74 @@
+{% extends 'oscad:templates/oscad/base.jinja2' %}
+
+{% macro t_oscad_url() %}
+<a href="http://opensource.telekom.net/oscad/">
+  http://opensource.telekom.net/oscad/
+</a>
+{% endmacro %}
+
+{% block content %}
+<div class="col-md-offset-2 col-md-8">
+  <h2>{{ _('Publication details') }}</h2>
+
+  <p>
+    <b>
+      {%- trans url=t_oscad_url() -%}
+      This instance of OSCAd offered under {{ url }} is hosted on a server of DTAG.
+      {%- endtrans -%}
+    </b>
+  </p>
+    
+  <p>
+    <b>{{_('Address')}}:</b>
+    Deutsche Telekom AG T-Online-Allee 1, 64295 Darmstadt
+  </p>
+
+  <p>
+    {{_('VAT ID No.')}} DE 123475223<br>
+    {{_('WEEE-Reg. No.')}} DE 50478376<br>
+    {{_('Trade Register: Bonn District Court')}}, HRB 6794<br>
+    {{_('Registered office')}} Bonn<br>
+  </p>
+
+  <p>
+    <b>{{_('Supervisory authority:')}}</b><br>
+    {%- trans -%}
+    Bundesnetzagentur für Elektrizität, Gas, Telekommunikation, Post und Eisenbahnen<br>
+    (German Federal Network Agency for electricity, gas, telecommunications, post and railway)
+    {%- endtrans -%}
+    <br>
+    Tulpenfeld 4, 53113 Bonn, Germany
+  </p>
+
+  <p>
+    <b>{{_('Authorized representatives:')}}</b>
+    Timotheus Höttges (Chairman), 
+    Reinhard Clemens, 
+    Niek Jan van Damme, 
+    Thomas Dannenfeldt, 
+    Dr. Thomas Kremer, 
+    Claudia Nemat, 
+    Prof. Dr. Marion Schick
+  </p>
+
+  <p>
+    <b>{{_('Responsible for the content:')}}</b>
+    Robert Schwegler
+  </p>
+
+  <p>
+    <b>{{_('Content maintenance:')}}</b>
+    Karsten Reincke
+  </p>
+
+  <p>
+    <b>{{_('Liability hint:')}}</b>&nbsp;
+    {%- trans -%} 
+    Although we are systematically testing the content of foreign pages 
+    linked to our site we assume no liability for the content of the 
+    linked sites and pages. Only the real owner and publisher of the 
+    linked foreign pages assume liability for their contents.
+    {%- endtrans -%}
+  </p>
+</div>
+{% endblock %}
