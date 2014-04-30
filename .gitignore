@@ -1,3 +1,5 @@
+*.pyc
+*.egg-info
 venv/
 p2/
 p3/
