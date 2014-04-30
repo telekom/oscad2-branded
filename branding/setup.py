@@ -9,7 +9,7 @@ setup(name='t-oscad',
       author_email='rpd@gido.de',
       url='https://github.com/dtag-dbu/oscad2-branding',
       packages=[
-          'oscad_data',
+          'oslic_export',
           'oscad_theme_telekom',
       ],
       package_data={
@@ -31,15 +31,15 @@ setup(name='t-oscad',
               'locale/*/LC_MESSAGES/*.po',
               'locale/*/LC_MESSAGES/*.mo',
           ],
-          'oscad_data': [
+          'oslic_export': [
               'data/*.yml',
           ],
       },
       entry_points={
           'babel.extractors': [
-              'oscad_lsuc       = oscad_data.extractors:extract_lsuc',
-              'oscad_osuc       = oscad_data.extractors:extract_osuc',
-              'oscad_parameters = oscad_data.extractors:extract_parameters',
+              'oscad_lsuc       = oslic_export.extractors:extract_lsuc',
+              'oscad_osuc       = oslic_export.extractors:extract_osuc',
+              'oscad_parameters = oslic_export.extractors:extract_parameters',
           ],
       },
       message_extractors={

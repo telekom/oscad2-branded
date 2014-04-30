@@ -1,4 +1,4 @@
-{% extends 'oscad:templates/oscad/base.jinja2' %}
+{% extends 'base.jinja2' %}
 
 {% block content %}
   <div class="page-header">
@@ -12,14 +12,14 @@
   </div>
 
   {% if can_simplify %}
-    {%- include 'oscad:templates/oscad/internal_use_simplified.jinja2' -%}
+    {%- include 'internal_use_simplified.jinja2' -%}
   {% else %}
-    {%- include 'oscad:templates/oscad/internal_use_failed.jinja2' -%}
+    {%- include 'internal_use_failed.jinja2' -%}
   {% endif %}
 
   <div class="row">
     <div class="col-md-12">
-      {%- include 'oscad:templates/oscad/disclaimer.jinja2' -%}
+      {%- include 'disclaimer.jinja2' -%}
     </div>
   </div>
 {% endblock %}
