@@ -30,3 +30,5 @@ copy, and distribute the code under copyright and patent law,
 This means, you may need to alter or remove some element of the user
 interface before you can deploy your own copy of the application.
 
+**Currently, this repository uses symbolic links and the application
+will not work on Windows without modification**
