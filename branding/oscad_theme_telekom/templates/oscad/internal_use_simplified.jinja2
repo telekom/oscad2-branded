@@ -1,77 +1,99 @@
+{# -------------------------------------------------------------------------- #}
+{#   OSCAd - the Open Source Compliance Advisor                               #}
+{#   Copyright (C) 2014 Deutsche Telekom AG                                   #}
+{#                                                                            #}
+{#   This program is free software: you can redistribute it and/or modify     #}
+{#   it under the terms of the GNU Affero General Public License as           #}
+{#   published by the Free Software Foundation, either version 3 of the       #}
+{#   License, or (at your option) any later version.                          #}
+{#                                                                            #}
+{#   This program is distributed in the hope that it will be useful,          #}
+{#   but WITHOUT ANY WARRANTY; without even the implied warranty of           #}
+{#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            #}
+{#   GNU Affero General Public License for more details.                      #}
+{#                                                                            #}
+{#   You should have received a copy of the GNU Affero General Public License #}
+{#   along with this program.  If not, see <http://www.gnu.org/licenses/>.    #}
+{# -------------------------------------------------------------------------- #}
 <div class="row">
   <div class="col-md-offset-1 col-md-2 result-answer-label">
-    {{ _('Request:') }}
+    {{request.select('Anfrage:', 'Request:')}}
   </div>
   <div class="col-md-8">
     <p>
-      {%- trans -%}
-	Provided I want to use unmodified open source software only internally and that each of the software packages is licensed under one of the licenses covered by OSLiC, what do I have to do for acting in accordance with these licenses?
-      {%- endtrans -%}
+      {%- if request.is_german -%}
+      {%- else -%}
+	Provided I want to use unmodified open source software only internally 
+	and that each of the software packages is licensed under one of the licenses 
+	covered by OSLiC, what do I have to do for acting in accordance 
+	with these licenses?
+      {%- endif -%}
     </p>
   </div>
 </div>
 <hr />
 <div class="row">
   <div class="col-md-offset-1 col-md-2 result-answer-label">
-    {{_('Answer:')}}:
+    {{request.select('Antwort:', 'Answer:')}}:
   </div>
   <div class="col-md-8">
     <p>
-      {%- trans -%}
-	For each of the open source software packages that you want to use OSCAd would answer that you do not have to do anything; and for some of these packages OSCAd would add that you must respect some interdictions. So, if you respect all the following interdictions for each piece of open source software you will certainly comply with all of the licenses.
-      {%- endtrans -%}
+      {%- if request.is_german -%}
+      {%- else -%}
+	For each of the open source software packages that you want to use
+	OSCAd would answer that you do not have to do anything; and for some 
+	of these packages OSCAd would add that you must respect some interdictions. 
+	So, if you respect all the following interdictions for each piece 
+	of open source software you will certainly comply with all of the licenses.
+      {%- endif -%}
     </p>
   </div>
 </div>
 <hr />
 <div class="row">
   <div class="col-md-offset-1 col-md-2 result-answer-label">
-    <b>{{ _('requires:') }}</b>
+    <b>requires:</b>
   </div>
   <div class="col-md-8">
     <b>
-      {%- trans -%}
-	no tasks in order to fulfill the conditions of all licenses of the open source software that you want to use
-      {%- endtrans -%}
+      no tasks in order to fulfill the conditions of all licenses 
+      of the open source software that you want to use
     </b>
   </div>
 </div>
 <hr />
 <div class="row">
   <div class="col-md-offset-1 col-md-2 result-answer-label">
-    <b>{{ _('forbids:') }}</b>
+    <b>forbids:</b>
   </div>
   <div class="col-md-8">
     <ul>
       <li>
-	{%- trans -%}
-	  to use trade names, trademarks, service marks, or product names of any of the licensors - except as required for reasonable and customary use in describing the origin of the work 
-	{%- endtrans -%}
+	to use trade names, trademarks, service marks, or product names 
+	of any of the licensors - except as required for reasonable and 
+	customary use in describing the origin of the work 
       </li>
       <li>
-	{%- trans -%}
-	  to endorse or to promote any of your services that are based on this software by one of the software names or by trademarks, service marks, logos, or product names that are linked to the software 
-	{%- endtrans -%}
+	to endorse or to promote any of your services that are based on 
+	this software by one of the software names or by trademarks, 
+	service marks, logos, or product names that are linked to the software 
       </li>
       <li>
-	{%- trans -%}
-	  to use the name of the licensing organizations or the names of the contributors to promote your own work 
-	{%- endtrans -%}
+	to use the name of the licensing organizations or the names 
+	of the contributors to promote your own work 
       </li>
       <li>
-	{%- trans -%}
-	  to institute any patent litigation against anyone alleging that the software constitutes patent infringement. 
-	{%- endtrans -%}
+	to institute any patent litigation against anyone alleging 
+	that the software constitutes patent infringement. 
       </li>
       <li>
-	{%- trans -%}
-	  to remove or to alter any copyright notices or license notices (including patent notices, disclaimers of warranty, or limitations of liablility) contained within the software package you have received 
-	{%- endtrans -%}
+	to remove or to alter any copyright notices or license notices 
+	(including patent notices, disclaimers of warranty, or limitations of liablility) 
+	contained within the software package you have received 
       </li>
       <li>
-	{%- trans -%}
-	  to use any contributors' name, logo, or trademarks (without an additional or general legally based approval) 
-	{%- endtrans -%}
+	to use any contributors' name, logo, or trademarks 
+	(without an additional or general legally based approval) 
       </li>
     </ul>
   </div>

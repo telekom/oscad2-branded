@@ -1,3 +1,21 @@
+// -----------------------------------------------------------------------------
+//   OSCAd - the Open Source Compliance Advisor
+//   Copyright (C) 2014 Amadeus IT Group, Deutsche Telekom AG
+//
+//   This program is free software: you can redistribute it and/or modify
+//   it under the terms of the GNU Affero General Public License as
+//   published by the Free Software Foundation, either version 3 of the
+//   License, or (at your option) any later version.
+//
+//   This program is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//   GNU Affero General Public License for more details.
+//
+//   You should have received a copy of the GNU Affero General Public License
+//   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// -----------------------------------------------------------------------------
+
 $brand-primary:         #E20074;
 $navbar-default-brand-color: $brand-primary;
 
@@ -6,3 +24,8 @@ $navbar-default-brand-color: $brand-primary;
 $grid-float-breakpoint: $screen-xs-min;
 
 @import "bootstrap/bootstrap";
+
+// Local Variables:
+// mode: Sass
+// fill-column: 80
+// End:

@@ -1,1 +1,50 @@
-../../../../std-oscad/oscad/templates/oscad/base.jinja2
+{# -------------------------------------------------------------------------- #}
+{#   OSCAd 2.0                                                                #}
+{#   Copyright 2013 2014 Thomas Weißschuh, Amadeus IT Group                   #}
+{#   Copyright 2013 2014 Kristian Schuhmacher, Amadeus IT Group               #}
+{#                                                                            #}
+{#   This program is free software: you can redistribute it and/or modify     #}
+{#   it under the terms of the GNU Affero General Public License as           #}
+{#   published by the Free Software Foundation, either version 3 of the       #}
+{#   License, or (at your option) any later version.                          #}
+{#                                                                            #}
+{#   This program is distributed in the hope that it will be useful,          #}
+{#   but WITHOUT ANY WARRANTY; without even the implied warranty of           #}
+{#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            #}
+{#   GNU Affero General Public License for more details.                      #}
+{#                                                                            #}
+{#   You should have received a copy of the GNU Affero General Public License #}
+{#   along with this program.  If not, see <http://www.gnu.org/licenses/>.    #}
+{# -------------------------------------------------------------------------- #}
+{#   This is a copy of the like-named file from OSCAd 2.0, modified for the   #}
+{#   Telekom theme by Ronald Dauster for Deutsche Telekom AG, May 2014        #}
+{# -------------------------------------------------------------------------- #}
+<!DOCTYPE html>
+<html lang="{{ request.localizer.locale.language }}">
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}OSCAd{% endblock %}</title>
+    {%- include 'css.jinja2' -%}
+    {%- include 'favicon.jinja2' -%}
+  </head>
+  <body>
+    <header>
+      {%- include 'headerbar.jinja2' ignore missing -%}
+      {%- include 'navigation.jinja2' -%}
+    </header>
+
+    {%- if request.session.peek_flash() -%}
+    <div class="container">
+      {%- for message in request.session.pop_flash() -%}
+      <div class="alert alert-info">
+        {{ message }}
+      </div>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+    <div class="container">
+      {%- block content %}{%- endblock -%}
+    </div>
+    {%- include 'javascript.jinja2' -%}
+  </body>
+</html>

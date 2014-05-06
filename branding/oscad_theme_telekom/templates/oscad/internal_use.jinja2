@@ -1,18 +1,35 @@
+{# -------------------------------------------------------------------------- #}
+{#   OSCAd - the Open Source Compliance Advisor                               #}
+{#   Copyright (C) 2014 Deutsche Telekom AG                                   #}
+{#                                                                            #}
+{#   This program is free software: you can redistribute it and/or modify     #}
+{#   it under the terms of the GNU Affero General Public License as           #}
+{#   published by the Free Software Foundation, either version 3 of the       #}
+{#   License, or (at your option) any later version.                          #}
+{#                                                                            #}
+{#   This program is distributed in the hope that it will be useful,          #}
+{#   but WITHOUT ANY WARRANTY; without even the implied warranty of           #}
+{#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            #}
+{#   GNU Affero General Public License for more details.                      #}
+{#                                                                            #}
+{#   You should have received a copy of the GNU Affero General Public License #}
+{#   along with this program.  If not, see <http://www.gnu.org/licenses/>.    #}
+{# -------------------------------------------------------------------------- #}
 {%- extends 'internal_use_base.jinja2' -%}
 
 {%- macro display_choices(id, default_value) -%}
   <div class="radio">
     <label>
-      <input type="radio" name="{{ id }}" value="true"
+      <input type="radio" name="{{id}}" value="true"
       {% if default_value %}checked{% endif %} />
-      {{ _('Yes') }}
+      {{request.select('Ja', 'Yes')}}
     </label>
   </div>
   <div class="radio">
     <label>
-      <input type="radio" name="{{ id }}" value="false"
+      <input type="radio" name="{{id}}" value="false"
       {% if not default_value %}checked{% endif %} />
-      {{ _('No') }}
+      {{request.select('Nein', 'No')}}
     </label>
   </div>
 {%- endmacro -%}
@@ -20,51 +37,63 @@
 {%- block request -%}
 <div class="row">
   <div class="col-md-offset-1 col-md-10">
-    <form action="{{ request.route_path('internal_use_result') }}" method="GET">
+    <form action="{{request.route_path('internal_use_result')}}" method="GET">
       <table class="table">
         <thead>
           <tr>
-            <th>{{ _('Question') }}</th>
-            <th>{{ _('Explanation') }}</th>
-            <th>{{ _('Answer') }}</th>
+            <th>{{request.select('Frage', 'Question')}}</th>
+            <th>{{request.select('Erklärung', 'Explanation')}}</th>
+            <th>{{request.select('Antwort', 'Answer')}}</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><b>{{_('Distribution to 3rd parties?')}}</b></td>
+            <td><b>{{request.select('Weitergabe an Dritte?', 'Distribution to 3rd parties?')}}</b></td>
             <td>
-	      {%- trans -%}
-		Is the open source application or library ever distributed to any third party (including other legal units of your company)?
-	      {%- endtrans -%}
+	      {%- if request.is_german -%}
+		Wird die Open Source Anwendung oder Bibliothek jemals and Dritte
+		(einschließlich selbstständiger Unternehmenseinheiten) weitergegben?
+	      {%- else -%}
+		Is the open source application or library ever distributed 
+		to any third party (including other legal units of your company)?
+	      {%- endif -%}
             </td>
-            <td>{{ display_choices('2others', true) }}</td>
+            <td>{{display_choices('2others', true)}}</td>
           </tr>
 
           <tr>
-            <td><b>{{_('Software modifications?')}}</b></td>
+            <td><b>{{request.select('Änderung der Software?', 'Software modifications?')}}</b></td>
             <td>
-	      {%- trans -%}
+	      {%- if request.is_german -%}
+		Verändern Sie die Open Source Software, die Ihr Projekt verwenden möchte?
+	      {%- else -%}
 		Do you modify any of the open source software that your project wants to use?
-	      {%- endtrans -%}
+	      {%- endif -%}
             </td>
             <td>{{ display_choices('modified', true) }}</td>
           </tr>
 
           <tr>
-            <td><b>{{_('Only licenses supported by OSLiC?')}}</b></td>
+            <td><b>{{request.select('Nur vom OSLiC unterstützte Lizenzen?', 
+		                    'Only licenses supported by OSLiC?')}}</b></td>
             <td>
-	      {%- trans -%}
-		Does your project use only open source software that has been licensed under one of the following open source licenses, which are covered by OSLiC: 
-	      {%- endtrans -%}
+	      {%- if request.is_german -%}
+		Verwende Iht Projekt ausschließlich Open Source Software, 
+		die unter einer der folgenden, vom OSLiC abgedeckten Lizenen steht?
+	      {%- else -%}
+		Does your project use only open source software 
+		that has been licensed under one of the following open source licenses, 
+		which are covered by OSLiC: 
+	      {%- endif -%}
               {{ ", ".join(licenses) }}
             </td>
-            <td>{{ display_choices('oslic', false) }}</td>
+            <td>{{display_choices('oslic', false)}}</td>
           </tr>
         </tbody>
       </table>
       <div class="text-center">
         <button class="btn btn-primary" type="submit">
-          {{ _('Submit request') }}
+          {{request.select('Anfrage abschicken', 'Submit request')}}
         </button>
       </div>
     </form>

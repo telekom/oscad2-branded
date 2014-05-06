@@ -1,25 +1,57 @@
+{# -------------------------------------------------------------------------- #}
+{#   OSCAd - the Open Source Compliance Advisor                               #}
+{#   Copyright (C) 2014 Deutsche Telekom AG                                   #}
+{#                                                                            #}
+{#   This program is free software: you can redistribute it and/or modify     #}
+{#   it under the terms of the GNU Affero General Public License as           #}
+{#   published by the Free Software Foundation, either version 3 of the       #}
+{#   License, or (at your option) any later version.                          #}
+{#                                                                            #}
+{#   This program is distributed in the hope that it will be useful,          #}
+{#   but WITHOUT ANY WARRANTY; without even the implied warranty of           #}
+{#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            #}
+{#   GNU Affero General Public License for more details.                      #}
+{#                                                                            #}
+{#   You should have received a copy of the GNU Affero General Public License #}
+{#   along with this program.  If not, see <http://www.gnu.org/licenses/>.    #}
+{# -------------------------------------------------------------------------- #}
 <div class="row">
   <div class="col-md-offset-1 col-md-2 result-answer-label">
-    {{ _('Request:') }}
+    {{request.select('Anfrage:', 'Request:')}}
   </div>
   <div class="col-md-8">
     <p>
-      {%- trans -%}
-	Can I simplify the process of using OSCAd, if I want to modify or distribute open source software or if I want to use Open Source Software that is distributed under a license that is not covered by OSLiC?
-      {%- endtrans -%}
+      {%- if request.is_german -%}
+	Kann ich die Verwendung von OSCAd vereinfachen, wenn ich Open Source
+	Software verändern oder weitergeben möchte oder wenn ich Open Source
+	Software verwende, die unter einer Lizenz vertrieben wird, die nicht
+	von OSLiC abgedeckt ist?
+      {%- else -%}
+	Can I simplify the process of using OSCAd, if I want to modify 
+	or distribute open source software or if I want to use Open Source 
+	Software that is distributed under a license that is not covered by OSLiC?
+      {%- endif -%}
     </p>
   </div>
 </div>
 <hr />
 <div class="row">
   <div class="col-md-offset-1 col-md-2 result-answer-label">
-    {{_('Answer:')}}:
+    {{request.select('Antwort:', 'Answer:')}}:
   </div>
   <div class="col-md-8">
     <p>
-      {%- trans -%}
-	Unfortunately, in these cases you will have to use OSCAd to analyse each license separately for all software packages that you want to modify or distribute.  Licenses that are not covered by OSLiC cannot be analyzed with OSCAd at all.
-      {%- endtrans -%}
+      {%- if request.is_german -%}
+	Leider müssen sie jede Lizenz einzeln mit OSCAd analysieren, wenn Sie
+	Softwarepakete ändern oder weitergeben wollen.  Lizenzen, die nicht
+	von OSLiC abgedeckt werden, können mit OSCAd überhaupt nicht analysiert
+	werden.
+      {%- else -%}
+	Unfortunately, in these cases you will have to use OSCAd 
+	to analyse each license separately for all the software packages 
+	that you want to modify or distribute.  Licenses that are not 
+	covered by OSLiC cannot be analyzed with OSCAd at all.
+      {%- endif -%}
     </p>
   </div>
 </div>

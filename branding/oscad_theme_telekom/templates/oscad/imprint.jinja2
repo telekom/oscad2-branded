@@ -1,3 +1,20 @@
+{# -------------------------------------------------------------------------- #}
+{#   OSCAd - the Open Source Compliance Advisor                               #}
+{#   Copyright (C) 2014 Deutsche Telekom AG                                   #}
+{#                                                                            #}
+{#   This program is free software: you can redistribute it and/or modify     #}
+{#   it under the terms of the GNU Affero General Public License as           #}
+{#   published by the Free Software Foundation, either version 3 of the       #}
+{#   License, or (at your option) any later version.                          #}
+{#                                                                            #}
+{#   This program is distributed in the hope that it will be useful,          #}
+{#   but WITHOUT ANY WARRANTY; without even the implied warranty of           #}
+{#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            #}
+{#   GNU Affero General Public License for more details.                      #}
+{#                                                                            #}
+{#   You should have received a copy of the GNU Affero General Public License #}
+{#   along with this program.  If not, see <http://www.gnu.org/licenses/>.    #}
+{# -------------------------------------------------------------------------- #}
 {% extends 'base.jinja2' %}
 
 {% macro t_oscad_url() %}
@@ -8,41 +25,44 @@
 
 {% block content %}
 <div class="col-md-offset-2 col-md-8">
-  <h2>{{ _('Publication details') }}</h2>
+  <h2>{{ request.select("Impressum", "Publication details") }}</h2>
 
   <p>
     <b>
-      {%- trans url=t_oscad_url() -%}
-      This instance of OSCAd offered under {{ url }} is hosted on a server of DTAG.
-      {%- endtrans -%}
+      {%- if request.is_german -%}
+	Die hier sichtbare Instanz von OSCAd läuft auf einem Server der DTAG,<br>
+	der unter der URL {{t_oscad_url()}} erreichbar ist.
+      {%- else -%}
+	This instance of OSCAd offered under {{t_oscad_url()}} 
+	is hosted on a server of DTAG.
+      {%- endif -%}
     </b>
   </p>
     
   <p>
-    <b>{{_('Address')}}:</b>
-    Deutsche Telekom AG T-Online-Allee 1, 64295 Darmstadt
+    <b>{{request.select('Anschrift', 'Address')}}:</b>
+    Deutsche Telekom AG, T-Online-Allee 1, 64295 Darmstadt
   </p>
 
   <p>
-    {{_('VAT ID No.')}} DE 123475223<br>
-    {{_('WEEE-Reg. No.')}} DE 50478376<br>
-    {{_('Trade Register: Bonn District Court')}}, HRB 6794<br>
-    {{_('Registered office')}} Bonn<br>
+    {{request.select('USt.-IdNr.', 'VAT ID No.')}} DE 123475223<br>
+    {{request.select('WEEE-Reg.-Nr.', 'WEEE-Reg. No.')}} DE 50478376<br>
+    {{request.select('Handelsregister: Amtsgericht Bonn', 'Trade Register: Bonn District Court')}}, HRB 6794<br>
+    {{request.select('Sitz der Gesellschaft:', 'Registered office:')}} Bonn<br>
   </p>
 
   <p>
-    <b>{{_('Supervisory authority:')}}</b><br>
-    {%- trans -%}
+    <b>{{request.select('Aufsichtsbehörde:', 'Supervisory authority:')}}</b><br>
     Bundesnetzagentur für Elektrizität, Gas, Telekommunikation, Post und Eisenbahnen<br>
-    (German Federal Network Agency for electricity, gas, telecommunications, post and railway)
-    {%- endtrans -%}
-    <br>
+    {%- if not request.is_german -%}
+    (German Federal Network Agency for electricity, gas, telecommunications, post and railway)<br>
+    {%- endif -%}
     Tulpenfeld 4, 53113 Bonn, Germany
   </p>
 
   <p>
-    <b>{{_('Authorized representatives:')}}</b>
-    Timotheus Höttges (Chairman), 
+    <b>{{request.select('Vertretungsberechtigt:', 'Authorized representatives:')}}</b>
+    Timotheus Höttges ({{request.select('Vorsitzender', 'Chairman')}}), 
     Reinhard Clemens, 
     Niek Jan van Damme, 
     Thomas Dannenfeldt, 
@@ -52,23 +72,27 @@
   </p>
 
   <p>
-    <b>{{_('Responsible for the content:')}}</b>
+    <b>{{request.select('Verantwortlich für den Inhalt:', 'Responsible for the content:')}}</b>
     Robert Schwegler
   </p>
 
   <p>
-    <b>{{_('Content maintenance:')}}</b>
+    <b>{{request.select('Pflege des Inhalts:', 'Content maintenance:')}}</b>
     Karsten Reincke
   </p>
 
   <p>
-    <b>{{_('Liability hint:')}}</b>&nbsp;
-    {%- trans -%} 
-    Although we are systematically testing the content of foreign pages 
-    linked to our site we assume no liability for the content of the 
-    linked sites and pages. Only the real owner and publisher of the 
-    linked foreign pages assume liability for their contents.
-    {%- endtrans -%}
+    <b>{{request.select('Haftungshinweis:', 'Liability hint:')}}</b>&nbsp;
+    {%- if request.is_german -%} 
+      Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung
+      für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten
+      sind ausschließlich deren Betreiber verantwortlich.
+    {%- else -%}
+      Although we are systematically testing the content of foreign pages 
+      linked to our site we assume no liability for the content of the 
+      linked sites and pages. Only the real owner and publisher of the 
+      linked foreign pages assume liability for their contents.
+    {%- endif -%}
   </p>
 </div>
 {% endblock %}

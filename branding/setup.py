@@ -1,12 +1,27 @@
 # coding=utf-8
+# ------------------------------------------------------------------------------
+#    OSCAd - the Open Source Compliance Advisor
+#    Copyright (C) 2014 Deutsche Telekom AG
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# ------------------------------------------------------------------------------
 
 from setuptools import setup
 
 setup(name='t-oscad',
       version='2.0.1-telekom',
       description='oscad 2 - telekom branded',
-      author='Ronald Dauster, GIDO GmbH',
-      author_email='rpd@gido.de',
       url='https://github.com/dtag-dbu/oscad2-branding',
       packages=[
           'oslic_export',
@@ -34,19 +49,5 @@ setup(name='t-oscad',
           'oslic_export': [
               'data/*.yml',
           ],
-      },
-      entry_points={
-          'babel.extractors': [
-              'oscad_lsuc       = oslic_export.extractors:extract_lsuc',
-              'oscad_osuc       = oslic_export.extractors:extract_osuc',
-              'oscad_parameters = oslic_export.extractors:extract_parameters',
-          ],
-      },
-      message_extractors={
-          'oscad_theme_telekom': [
-              ('**.py', 'python', None),
-              ('**.jinja2', 'jinja2', None),
-              ('static/**', 'ignore', None),
-          ],
-      },
+      }
   )

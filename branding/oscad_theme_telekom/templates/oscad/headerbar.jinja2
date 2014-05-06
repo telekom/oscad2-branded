@@ -1,12 +1,39 @@
-<nav class="navbar navbar-headerbar theme">
-  <div class="container navbar-brands">
-    <div class="navbar-header">
-      <a href="http://www.telekom.com">
-        <img alt="Logo of Deutsche Telekom" class="logo-telekom"
-             src="{{ request.static_url('oscad:static/img/t-logo-128x60.orig.png') }}" />
-      </a>
-      <img alt="LIFE IS FOR SHARING" class="motto-telekom"
-           src="{{ request.static_url('oscad:static/img/t-slogan-en-198x60.orig.png') }}" />
-    </div>
-  </div>
-</nav>
+{# -------------------------------------------------------------------------- #}
+{#   OSCAd - the Open Source Compliance Advisor                               #}
+{#   Copyright (C) 2014 Deutsche Telekom AG                                   #}
+{#                                                                            #}
+{#   This program is free software: you can redistribute it and/or modify     #}
+{#   it under the terms of the GNU Affero General Public License as           #}
+{#   published by the Free Software Foundation, either version 3 of the       #}
+{#   License, or (at your option) any later version.                          #}
+{#                                                                            #}
+{#   This program is distributed in the hope that it will be useful,          #}
+{#   but WITHOUT ANY WARRANTY; without even the implied warranty of           #}
+{#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            #}
+{#   GNU Affero General Public License for more details.                      #}
+{#                                                                            #}
+{#   You should have received a copy of the GNU Affero General Public License #}
+{#   along with this program.  If not, see <http://www.gnu.org/licenses/>.    #}
+{# -------------------------------------------------------------------------- #}
+{%- set alt_logo = request.select("Logo der Deutschen Telekom", "Logo of Deutsche Telekom") -%}
+{%- set src_logo = request.static_url('oscad:static/img/t-logo-128x60.orig.png')            -%}
+{%- set alt_slogan = request.select("ERLEBEN, WAS VERBINDET", "LIFE IS FOR SHARING")        -%}
+{%- set src_slogan = request.static_url('oscad:static/img/t-slogan-en-198x60.orig.png')     -%}
+
+{%- macro telekom_logo() -%}
+<a href="http://www.telekom.com">
+  <img id="logo-telekom" alt="{{alt_logo}}" src="{{src_logo}}" />
+</a>
+{%- endmacro -%}
+
+{%- macro telekom_motto() -%}
+<img id="motto-telekom" alt="{{alt_slogan}}" src="{{src_slogan}}" />
+{%- endmacro -%}
+
+<div class="container">
+  <div class="row">
+    <div class="pull-left">{{telekom_logo()}}</div>
+    <div class="pull-right">{{telekom_motto()}}</div>
+  </div>  
+</div>
+
