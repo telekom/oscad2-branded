@@ -22,22 +22,23 @@
   <div class="col-md-offset-1 col-md-10">
     <div class="panel panel-info">
       <div class="panel-heading">
-        <h4 class="panel-title">{{request.select('Hinweis', 'Hint') }}</h4>
+        <h4 class="panel-title">
+          {%- if request.is_german -%}
+	    Analysieren Sie Ihr ganzes Projekt auf einmal!
+          {%- else -%}
+	    Analyse your whole project at one go!
+          {%- endif -%}
+	</h4>
       </div>
       <div class="panel-body">
         {%- if request.is_german -%}
-	  Es ist vorgesehen, dass OSCAd für jede einzelne Open Source Software
-	  und jede einzelne Lizenz, die Ihr Projekt verwendet, angewendet wird.
-	  Wenn Sie Open Source Software aber nur intern nutzen, ohne Sie weiterzugeben,
-	  dann kommt OSCAd oft (aber nicht immer) zum gleichen Ergebnis:
-	  Es gibt keine Tätigkeiten, die sie ausführen müssen, aber Sie müssen 
-	  einige Verbote beachten.
+	  Normalerweise müssen Sie OSCAd für jede einzelne Open Source Software 
+	  und jede einzelne Lizenz, die Ihr Projekt verwendet, anwenden. Für die 
+	  interne Nutzung kann das oft mittels dieses Formulars vereinfacht werden.
 	{%- else -%}
-          OSCAd is intended to be used for each single open source software 
-	  program or license in a project. But if you use the open source 
-	  software only internally without distributing it, then OSCAd often 
-	  (but not always) offers the same conclusion: There are no tasks 
-	  to be performed but you must respect some interdictions.
+	  Usually, you have to apply OSCAd to each single open source program or 
+	  license in a project. If the software is used only internally, this
+	  process can often be simplified by the following form.
         {%- endif %}
       </div>
     </div>

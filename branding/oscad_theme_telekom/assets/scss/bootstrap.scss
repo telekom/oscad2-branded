@@ -19,6 +19,11 @@
 $brand-primary:         #E20074;
 $navbar-default-brand-color: $brand-primary;
 
+$navbar-default-bg:     #FFF;
+
+$state-info-text:       #000;
+$state-info-bg:         darken($navbar-default-bg, 6.5%);
+
 @import "bootstrap/variables";
 
 $grid-float-breakpoint: $screen-xs-min;
