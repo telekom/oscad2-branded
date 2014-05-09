@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # ------------------------------------------------------------------------------
 #    OSCAd - the Open Source Compliance Advisor
 #    Copyright (C) 2014 Deutsche Telekom AG
@@ -42,13 +43,13 @@ def add_menu_entries(event):
         return (request.route_path(route), _localize(request, german, english))
 
     toplevel_links = [
-        entry('request',           'Standardanfrage',   'Standard Request'),
-        entry('matrix_request',    'Taxononie-Anfrage', 'Taxonomy request'),
-        entry('internal_use_form', 'Sonderanfrage',     'Special Request'),
-        entry('about',             'Über OSCAd',        'About'),
-        entry('components',        'Komponenten',       'Components'),
-        entry('imprint',           'Impressum',         'Imprint'),
-        entry('help',              'Hilfe',             'Help')]
+        entry('request',           u'Standardanfrage',   u'Standard Request'),
+        entry('matrix_request',    u'Taxononie-Anfrage', u'Taxonomy request'),
+        entry('internal_use_form', u'Sonderanfrage',     u'Special Request'),
+        entry('about',             u'Über OSCAd',        u'About'),
+        entry('components',        u'Komponenten',       u'Components'),
+        entry('imprint',           u'Impressum',         u'Imprint'),
+        entry('help',              u'Hilfe',             u'Help')]
     
     event['toplevel_links'] = toplevel_links
                 
