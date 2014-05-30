@@ -25,16 +25,16 @@
 
 {% block content %}
 <div class="col-md-offset-2 col-md-8">
-  <h2>{{ request.select("Impressum", "Publication details") }}</h2>
+  <h1>{{ request.select("Impressum", "Publication details") }}</h1>
 
   <p>
     <b>
       {%- if request.is_german -%}
-	Die hier sichtbare Instanz von OSCAd läuft auf einem Server der DTAG,<br>
-	der unter der URL {{t_oscad_url()}} erreichbar ist.
+        Die hier sichtbare Instanz von OSCAd läuft auf einem Server der DTAG,<br>
+        der unter der URL {{t_oscad_url()}} erreichbar ist.
       {%- else -%}
-	This instance of OSCAd offered under {{t_oscad_url()}} 
-	is hosted on a server of DTAG.
+        This instance of OSCAd offered under {{t_oscad_url()}} 
+        is hosted on a server of DTAG.
       {%- endif -%}
     </b>
   </p>
