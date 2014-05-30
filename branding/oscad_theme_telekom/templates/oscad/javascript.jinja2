@@ -1,8 +1,4 @@
-<div>
-  <script type="text/javascript"
-          src="{{ request.static_url('oscad:jquery/jquery-2.0.3.min.js') }}">
-  </script>
-  <script type="text/javascript"
-          src="{{ request.static_url('oscad:bootstrap/js/bootstrap.min.js') }}">
-  </script>
-</div>
+{%- set jquery_minified    = request.static_url('oscad:jquery/jquery-2.0.3.min.js')       -%}
+{%- set bootstrap_minified = request.static_url('oscad:bootstrap/js/bootstrap.min.js')    -%}
+<script type="text/javascript" src="{{jquery_minified}}"></script>
+<script type="text/javascript" src="{{bootstrap_minified}}"></script>
