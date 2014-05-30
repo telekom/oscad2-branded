@@ -17,6 +17,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ------------------------------------------------------------------------------
 
+from .t_version import theme_version
+
 def _isgerman(request):
     return request.locale_name == "de"
 
@@ -58,6 +60,10 @@ def set_oslic_url(event):
     request = event['request']
     request.oscad_settings.oslic_url = request.static_url('oscad:static/pdf/oslic-0.99.3.pdf')
     
+def set_theme_version(event):
+    request = event['request']
+    request.theme_version = theme_version
+
 def add_translation_method(event):
     request = event['request']
 
@@ -77,4 +83,4 @@ def register_events(config):
     before_render('add_menu_entries')
     before_render('set_oslic_url')
     before_render('add_translation_method')
-
+    before_render('set_theme_version')
