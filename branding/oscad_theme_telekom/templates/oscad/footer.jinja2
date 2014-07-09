@@ -17,7 +17,7 @@
 {# -------------------------------------------------------------------------- #}
 {%- if request.path != request.route_path('javascript_licenses') -%}
 <div class="container">
-  <a href="{{request.route_path('javascript_licenses')}}">
+  RD-Check <a href="{{request.route_path('javascript_licenses')}}">
     {{request.select('Javascript Lizenzen', 'Javascript licenses')}}
   </a>
 </div>
