@@ -1,4 +1,0 @@
-[submodule "std-oscad"]
-	path = std-oscad
-	url = https://github.com/dtag-dbu/oscad
-	branch = amadeus
