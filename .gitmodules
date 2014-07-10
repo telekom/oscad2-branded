@@ -1,0 +1,4 @@
+[submodule "std-oscad"]
+	path = std-oscad
+	url = https://github.com/dtag-dbu/oscad2
+	branch = master
